@@ -14,8 +14,8 @@ RUN make --quiet grpc_cli
 
 FROM ubuntu:latest
 MAINTAINER Vladislav Nekhaychik <vladislavnekhaichik@gmail.com>
-WORKDIR /root/
 RUN apt-get update && apt-get install -qq libgflags2v5
+WORKDIR /root/
 COPY --from=builder /grpc/bins/opt .
 COPY --from=builder /protobuf/src/google/protobuf/*.proto google/protobuf/
-CMD ["./grpc_cli"]
+ENTRYPOINT ["./grpc_cli"]
