@@ -14,7 +14,7 @@ RUN make --quiet grpc_cli
 
 FROM ubuntu:bionic
 LABEL maintainer="https://github.com/VladikAN/grpc-cli-docker"
-RUN apt update && apt install -qy libgflags2v5
+RUN apt update && apt install -qy libgflags2.2
 WORKDIR /root/
 COPY --from=builder /grpc/bins/opt .
 COPY --from=builder /protobuf/src/google/protobuf/*.proto google/protobuf/
